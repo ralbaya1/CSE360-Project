@@ -1,9 +1,8 @@
-//Raid AL Bayati//
-//Cesar Gaytan ------------------- Testing -------------
+
 /* Login Functionality
  * Some parts of this class has been commented because it requires other classes to be compiled successfully.
  */
- // dont make me kill you github, i really really am warning you
+
 import java.util.Scanner;
 public class login //extends User
 {
