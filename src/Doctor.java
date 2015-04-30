@@ -4,7 +4,7 @@ import java.util.List;
 public class Doctor extends User {
 	
 	//fields
-	private List<Patient> patientList;
+	private ArrayList<Patient> patientList;
 	
 	//default constructor
 	public Doctor(){
@@ -18,15 +18,22 @@ public class Doctor extends User {
 		setPatientList(new ArrayList<Patient>());
 	}
 	
-	public List<Patient> getPatientList() {
+	public ArrayList<Patient> getPatientList() {
 		return patientList;
 	}
-
-	public void setPatientList(List<Patient> patientList) {
+	
+	public Patient getPatient(int index){
+		return patientList.get(index);
+		
+	}
+	public void setPatientList(ArrayList<Patient> patientList) {
 		this.patientList = patientList;
 	}
 	
+	
 	public boolean addPatientList(Patient E){
+		//Add if Patient does not exist in database already
+		
 		if (!patientExist(E.firstName, E.lastName))  
 		{
 			patientList.add(E);
@@ -38,8 +45,19 @@ public class Doctor extends User {
 		else return false;
 	}
 	public void removePatient(Patient E){
-		patientList.remove(E);
+		
+		//if (!patientExist(E.firstName, E.lastName))  
+		//{
+			patientList.remove(E);
+			Database D1 = new Database();
+			
+			// Also remove it to the database. 
+			D1.removePatientFromDB(E);
+			
+		//}
+		//else return false;
 	}
+	
 	public void printList()
 	{
 		for(int i = 0; i < patientList.size(); i++)
@@ -62,7 +80,16 @@ public class Doctor extends User {
 		return exist;
 	}
 	
-	
+	public Patient returnPatient(String FirstName, String LastName)
+	{
+		for( int i =  0; i < patientList.size();i++)
+		{
+			if(FirstName.equals(patientList.get(i).getFirstName()) && LastName.equals(patientList.get(i).getLastName()))
+				return patientList.get(i);
+				
+		}
+		return null;
+	}
 	
 
 }

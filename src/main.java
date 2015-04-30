@@ -1,9 +1,12 @@
 import java.awt.Image;
+import java.awt.event.WindowStateListener;
 import java.sql.*;
 import java.util.*;
 
+import javax.swing.JFrame;
 
-public class main {
+
+public class main extends JFrame{
 
 	
 	public static void main(String[] args) {
@@ -14,7 +17,7 @@ public class main {
 		int psypt1[] = new int[7];
 		int psypt2[] = new int[7];
 		int thresh[] = new int[7];
-		String dname ="Doc2";
+		String dname ="Dr1";
 		for (int i =0; i<7; i++)
 		{
 			sypt[i]= i;
@@ -24,14 +27,26 @@ public class main {
 		}
 		
 		ArrayList<String[]> names = new ArrayList<String[]>();
-		D1.addPatient("asdf", "jkl", 1, "JD", "pass", "City Born", "Minn", sypt, psypt1,psypt2, thresh,dname);
+		//D1.addPatient("asdf", "jkl", 1, "AD", "pass", "City Born", "Minn", sypt, psypt1,psypt2, thresh,dname);
+		
+		
 		names=D1.getPatientsNameList(); 
-		//for (int j = 0; j <2; j++)
+
 		D1.removePatientFromDB("Akaramba", "Peter");
-		//Patient 
-		//{
+		
+		
+		//for (int i =0; i <5; i++)
+		//	D1.addPatient("PatientFname"+i, "PatientLname"+1, i, "UserP"+i,"Pass"+i, "Question", "sec"+i,sypt, psypt1,psypt2, thresh,dname);
+		
+		
 		ArrayList<Patient> names11 = new ArrayList<Patient>();
 		names11=D1.getPatientList("Doc1");
+		
+		
+		//for (int i =0; i <5; i++)
+		//	D1.addDoctor("Dr"+i, "last"+1, "Un"+i, "Pass"+i, "sec"+i);
+		
+		
 		//D1.addPatient(names11.get(5));
 		//D1.addPatient();
 		String names1[];
@@ -42,13 +57,24 @@ public class main {
 				test = names11.get(k);
 				System.out.print("\nFrist Name: "+test.getFirstName()+"   Last Name: "+test.getLastName()+"\t");
 				int thre[] = test.getSymptomsThreshold();
-				//System.out.println(test.getSecurityQuestionAnswer());
+
 				for (int i = 0; i<thre.length; i++)
 					System.out.print("Symptom"+i+": "+thre[i]+"\t");
 				System.out.println();
 			}
-			
+		
+		if( !D1.docPasswordCheck("asdf"))
+		{
+			System.out.println("\npassword Invalid");
 
+		}
+		if (D1.docCheck("12", "Pass1"))
+			System.out.println("\npassword Valid");
+			
+		System.out.println("\n"+D1.getPatientAnswer("Pn3"));
 	}
+	
+	
+	
 
 }
