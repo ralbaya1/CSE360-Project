@@ -1,6 +1,8 @@
 ///**********************************************************
- //*  				Using this GUI 
- //*******************************************************/
+//This is the login window after the HCare_GUI(after patient or doctor).
+// The username and passwords are checked and routed to the Patient or Doctor homepage 
+//Using this GUI 
+//*******************************************************/
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -92,7 +94,6 @@ public class GUI_Login extends JFrame {
 				
 				
 				Database db  = new Database();
-				//boolean ValidUserName = db.
 				
 				boolean ValidUserName = false;
 				boolean ValidPassword= false;
@@ -115,13 +116,6 @@ public class GUI_Login extends JFrame {
 					 ValidLogIn = db.docCheck(UserNFiled.getText(), passwordField.getText());
 				}
 			
-//				Login Lin = new Login();
-//				
-//				System.out.println("In the Log in GUI ");
-//				System.out.println("The user tpe is "+ getUserType());
-//				Lin.setUserType(getUserType());
-//				
-//				Lin.CheckLogin( UserNFiled.getText() , passwordField.getText());
 				
 				if(count >2)
 				{
@@ -141,7 +135,6 @@ public class GUI_Login extends JFrame {
 			if(ValidLogIn)
 				{
 					// *** show valid message ***
-					//JOptionPane.showMessageDialog(null, "Correct Password");
 					
 					if( getUserType().equals("PatientData") )
 					{
@@ -151,9 +144,7 @@ public class GUI_Login extends JFrame {
 						Patient p = db.getPatient(UserNFiled.getText(), passwordField.getText());
 						db.closeDatabase();
 						PatientHomepageGUI PatientGUI = new PatientHomepageGUI(p);
-						//PatientGUI.setPatient(p);
 						// add the patient object to the Patient GUI
-						//db.closeDatabase();
 						PatientGUI.setVisible(true);
 					}
 					else
@@ -167,7 +158,6 @@ public class GUI_Login extends JFrame {
 						Doctor D = db.getDoctor(UserNFiled.getText(), passwordField.getText());
 						D.setPatientList(db.getPatientList(D.getLastName()));
 						
-						//db.closeDatabase();
 						
 						List<Patient> Plist = D.getPatientList();
 						int size = D.getPatientList().size();
@@ -177,16 +167,11 @@ public class GUI_Login extends JFrame {
 						for(int i = 0; i < size; i++)
 						{
 							ThreshChk = Plist.get(i).getFlag();
-							System.out.println(ThreshChk);
 							if(ThreshChk != 0)
 							{	
-								//db.closeDatabase();
-								//System.out.println(Plist.get(i).getFlag());
 								Plist.get(i).setFlag(0);
 								
 								db.setNotification(0, Plist.get(i));
-								//System.out.println(Plist.get(i).getFlag());
-								//db.closeDatabase();
 								NotifyWin w = new NotifyWin();
 								w.dispose();
 								w.Genwindow(Plist.get(i));
@@ -202,19 +187,6 @@ public class GUI_Login extends JFrame {
 												
 						DoctorHomePage DrGUI = new DoctorHomePage(D);
 						DrGUI.setVisible(true);
-						
-						//************************
-						/*Dr Doctor = new Dr();
-						Doctor.setDr(D);
-						Doctor.setVisible(true);
-						**************************************/
-						
-						
-						//*****************************
-						/*DoctorHomePage DrGUI = new DoctorHomePage();
-						DrGUI.setDoctor(D);												
-						DrGUI.setVisible(true);		// add the doctor object to the doctorGUI
-						****************/
 					}
 					
 					
@@ -222,7 +194,6 @@ public class GUI_Login extends JFrame {
 			
 				else if ( ValidUserName  && !ValidPassword )
 				{
-					// Lin.getValidUserName()
 					JOptionPane.showMessageDialog(null, "wrong password");
 					count++;
 				}
@@ -230,12 +201,10 @@ public class GUI_Login extends JFrame {
 				else if (!ValidUserName  && ValidPassword )
 				{
 					JOptionPane.showMessageDialog(null, "worng username");
-					//count++;
 				}
 				else if (!ValidUserName  && ValidPassword )
 				{
 					JOptionPane.showMessageDialog(null, "Wrong Username and Password");
-					//count++;
 				}
 			
 				else 
@@ -247,11 +216,6 @@ public class GUI_Login extends JFrame {
 			
 			}
 		});
-		
-		
-		
-		
-		
 		btnSubmit.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSubmit.setBounds(448, 225, 113, 25);
 		contentPane.add(btnSubmit);

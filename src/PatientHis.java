@@ -17,9 +17,9 @@ import java.sql.*;
 
 public class PatientHis extends JFrame{
 
-	private JFrame frame = new JFrame();
+	private JFrame frame = new JFrame();  // global Jframe used
 	
-	private Patient P1;
+	private Patient P1;  //A private Patient object used to manipulate the passed in Patient.
 	JPanel Pan =new JPanel();
 
 	/**
@@ -37,22 +37,9 @@ public class PatientHis extends JFrame{
 			}
 		});
 	}
-	/*public void displayWindow(){
-			
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						PatientHis window = new PatientHis();
-						window.setVisible(false);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		}*/
-	/**
-	 * Create the application.
-	 */
+	
+	// 
+	//parameterized constructor that Sets the Patient passed in
 	public PatientHis(Patient P) {
 		P1 = P;
 		initialize();
@@ -63,6 +50,7 @@ public class PatientHis extends JFrame{
 		dispose();
 	}
 	
+	//Creates the DefaultCategoryDataset to be used in the Bargraph  
 	public DefaultCategoryDataset dataSetInit(int currentSympt[], int prevSympt1[], int prevSympt2[])
 	{
 		DefaultCategoryDataset dataset= new DefaultCategoryDataset();
@@ -94,52 +82,25 @@ public class PatientHis extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//frame = new JFrame();
 		frame.setSize(725, 482);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.getContentPane().setLayout(null);
-		
-		
-		DefaultCategoryDataset dataset= new DefaultCategoryDataset();
-		//JOptionPane.showMessageDialog(null, "BUTTON CLICKED!!!");
-		//LableMessage.setText("BUTTON CLICKED!!!");
-		
-		//Pain, Drowsiness, Nausea, Anxiety, and Depression
-		/*dataset.setValue(2, "day1","Pain");
-		dataset.setValue(5, "day2","Pain");
-		dataset.setValue(4, "day3","Pain");
-		dataset.setValue(6, "day1", "Drowsiness");
-		dataset.setValue(10, "day2", "Drowsiness");
-		dataset.setValue(8, "day3", "Drowsiness");
-		dataset.setValue(1, "day1", "Nausea");
-		dataset.setValue(7, "day2", "Nausea");
-		dataset.setValue(5, "day3", "Nausea");
-		dataset.setValue(3,"day1","Anxiety");	
-		dataset.setValue(8,"day2","Anxiety");
-		dataset.setValue(9,"day3","Anxiety");
-		dataset.setValue(8, "day1", "Depression");
-		dataset.setValue(7, "day2", "Depression");
-		dataset.setValue(9, "day3", "Depression");*/
+
 		int test[] = new int[7];
 		for (int i=0;i<7; i++)
 		{
 			test[i]=5;
 		}
+		
 		DefaultCategoryDataset dataset2= new DefaultCategoryDataset();
+		//Geting the dataset
 		dataset2 = dataSetInit(P1.getEnterSymptomLevel(),P1.getPreviousSymptomLevel1(),P1.getPreviousSymptomLevel2());
-		//dataset2 = dataSetInit(test,test,test);
-		//P1.getEnter
-		//DefaultCategoryDataset dataset2= new DefaultCategoryDataset();
-
-		//JFreeChart chart= ChartFactory.createBarChart(P1.firstName+" "+P1.lastName,"Symptoms", "Levels", dataset2, PlotOrientation.VERTICAL,false,true,false);
 
 		JFreeChart chart= ChartFactory.createBarChart3D("Symptom Report","Symptoms", "Levels", dataset2, PlotOrientation.VERTICAL,true,true,true);
-		//JFreeChart chart2= ChartFactory.createBarChart("Symptom Report","Symptoms", "Levels", dataset2, PlotOrientation.VERTICAL,false,true,false);
 		chart.setBackgroundPaint(Color.lightGray);
-		//JFreeChart chart2= ChartFactory.createBarChart("Grade Report","Student Name", "Marks", dataset2, PlotOrientation.VERTICAL,false,true,false);
 		
+		// creating the panel with the chart
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new Dimension(700,350));
+		// Adding the panel to the JFrame 
 		Pan.add(chartPanel);
 		
 		frame.getContentPane().add(Pan);
@@ -147,12 +108,7 @@ public class PatientHis extends JFrame{
 		p.setRangeGridlinePaint(Color.red);
 		p.setBackgroundPaint(Color.WHITE);
 		frame.setVisible(true);
-//		ChartFrame frame= new ChartFrame("Bar Graph Test",chart,false);
-//		
-//		frame.setVisible(true);
-//		frame.setSize(700,350);
-//		frame.setResizable(false);
-		//frame2 =new JFrame()
+
 	}
 
 }

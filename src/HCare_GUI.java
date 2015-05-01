@@ -1,8 +1,14 @@
+/* 
+ * CSE 360
+ * Team11
+*/
+
 /**********************************************************
- *  	This will be the first window the use will see. 
+ * THIS CLASS IS TO BE RUN INITIALLY.
+ *  
+ *  This will be the first window the use will see. 
  *  The user will the log in ( doctor or patient ) . 
  *******************************************************/
-
 
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -12,7 +18,6 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 
 public class HCare_GUI {
 

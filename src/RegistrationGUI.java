@@ -54,7 +54,6 @@ public class RegistrationGUI extends JFrame {
 	
 	public void setSymptomTEntered(int index, int value)
 	{
-		//System.out.println("The index is "+ index + " the value is "+ value);
 		Symptom[index] = value;
 	}
 	
@@ -70,12 +69,6 @@ public class RegistrationGUI extends JFrame {
 	public void PrintThreshold()
 	{
 		int Scan[] = getSymptom();
-		
-		for( int i = 0; i < Scan.length; i++)
-			System.out.println( "Symptom " +i + " entered is: "+ Scan[i]);
-		
-		System.out.println("===================================");
-		System.out.println();
 	}
 
 	/**
@@ -286,9 +279,9 @@ public class RegistrationGUI extends JFrame {
 				setSymptomTEntered(6,S7.getValue());
 					
 				
-				//String x = Dr.getLastName();
+				
 				PrintThreshold();
-				//Dr.firstName();
+				
 				Patient P = new Patient(
 						FirstNameFiled.getText(),
 						LastNameFiled.getText(),

@@ -150,7 +150,7 @@ public class FGP_GUI extends JFrame {
 				
 				Database db  = new Database();
 				
-				//System.out.println("the size of the input;" +UnameField.getText().length());
+				//System.out.println("the size of the input;" + table);
 				
 				
 				if(UnameField.getText().length() == 0)

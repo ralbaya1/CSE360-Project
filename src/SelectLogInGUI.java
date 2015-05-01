@@ -58,7 +58,7 @@ public class SelectLogInGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// close window 
 				dispose();
-				GUI_Login LogN = new GUI_Login();  //GUI_Longin LogN = new GUI_Longin();
+				GUI_Login LogN = new GUI_Login();  
 				LogN.setUserType("PatientData");
 				LogN.setVisible(true);
 				
@@ -83,7 +83,7 @@ public class SelectLogInGUI extends JFrame {
 				// close window 
 				// create  log in 
 				dispose();
-				GUI_Login LogN = new GUI_Login();  //GUI_Longin LogN = new GUI_Longin();
+				GUI_Login LogN = new GUI_Login();  
 				LogN.setUserType("Doctor");
 				LogN.setVisible(true);
 			}
@@ -129,6 +129,6 @@ public class SelectLogInGUI extends JFrame {
 		Backgournd.setIcon(new ImageIcon(BackG));
 		Backgournd.setBounds(0, 0, 626, 333);
 		contentPane.add(Backgournd);
-		//Image BackG = new ImageIcon(this.getClass().getResource("/LWhite.png")).getImage();
+		
 	}
 }

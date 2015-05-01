@@ -44,7 +44,6 @@ public class PatientHomepageGUI extends JFrame {
 	 ****************************/
 	public void setsymptomsEntered(int index, int value)
 	{
-		//System.out.println("The index is "+ index + " the value is "+ value);
 		symptoms[index] = value;
 	}
 	
@@ -64,23 +63,7 @@ public class PatientHomepageGUI extends JFrame {
 	 */
 	public static void main(String[] args) {
 		
-		
-		//Doctor doc1 = new Doctor("Dr","Mundo","king","one","tacos");
-	
-		
-		//Patient patient1 = new Patient("saul","figueroa","two","three","pozole");
-		//Patient patient2 = new Patient("cesar","gaytan","two","three","pozole");
-		//Patient patient3 = new Patient("kyle","steffa","two","three","pozole");
-		
-		//System.out.println(patient1);
-		//doc1.addPatientList(patient1);
-		//doc1.addPatientList(patient2);
-		//doc1.addPatientList(patient3);
-		//doc1.printList();
-		//doc1.removePatient(patient2);
-		System.out.println("\n");
-		//doc1.printList();
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -118,7 +101,6 @@ public class PatientHomepageGUI extends JFrame {
 				dispose();
 				SelectLogInGUI PogramGUI = new SelectLogInGUI();
 				PogramGUI.setVisible(true);
-				//JOptionPane.showMessageDialog(null, "Return to Log in screen");
 			}
 		});
 		btnLogOut.setBounds(395, 605, 109, 25);
@@ -144,13 +126,7 @@ public class PatientHomepageGUI extends JFrame {
 		lblEnterSymtomsFrom.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblEnterSymtomsFrom.setBounds(128, 22, 297, 53);
 		getContentPane().add(lblEnterSymtomsFrom);
-		
-		/*textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textField.setText("Enter Comments...");
-		textField.setBounds(244, 562, 200, 83);
-		contentPane.add(textField);
-		textField.setColumns(10);*/
+
 		
 		final JSlider slider = new JSlider();
 		slider.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -267,12 +243,11 @@ public class PatientHomepageGUI extends JFrame {
 				setsymptomsEntered(5,slider_5.getValue());
 				setsymptomsEntered(6,slider_6.getValue());
 				
-				//pass the symptoms to the patient
-				//P.setSymptomLevel(symptoms);
+				
 				setsymptoms();
 				P.thresholdCheck();
 				
-				//int check = P.getFlag();
+				
 				
 				JOptionPane.showMessageDialog(null, "Submited successful");
 				
@@ -280,27 +255,6 @@ public class PatientHomepageGUI extends JFrame {
 				SelectLogInGUI PogramGUI = new SelectLogInGUI();
 				PogramGUI.setVisible(true);
 				
-				/*int temp[] = new int[7];
-				int temp2[] = new int[7];
-				int temp3[] = new int[7];
-				
-				temp = P.getEnterSymptomLevel();
-				
-				
-				temp2 = P.getPreviousSymptomLevel1();
-				temp3 = P.getPreviousSymptomLevel2();
-				System.out.print("\n");
-				for(int i = 0; i < 7;  i++){
-					System.out.print(P.getEnterSymptomLevel()[i] + " ");
-				}
-				System.out.print("\n");
-				for(int i = 0; i < 7;  i++){
-					System.out.print(P.getPreviousSymptomLevel1()[i] + " ");
-				}
-				System.out.print("\n");
-				for(int i = 0; i < 7;  i++){
-					System.out.print(P.getPreviousSymptomLevel2()[i] + " ");
-				}*/
 				
 			}
 		});

@@ -127,9 +127,7 @@ public class DoctorHomePage extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {	
 				int index = list.getSelectedIndex();
-				
-				//patientList[index] = "removed";
-				System.out.println(dr.getPatientList().get(index).getFirstName());
+
 				dr.removePatient(dr.getPatientList().get(index));			
 				
 				revalidate();
@@ -180,11 +178,7 @@ public class DoctorHomePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//String name = dr.getFirstName();
-		
-		
-		
-		JLabel DrNameLable = new JLabel("Welcome Dr. "+Dr.getFirstName() + " " + Dr.getLastName());//dr.getFirstName() + " " + dr.getLastName());
+		JLabel DrNameLable = new JLabel("Welcome Dr. "+Dr.getFirstName() + " " + Dr.getLastName());
 		DrNameLable.setHorizontalAlignment(SwingConstants.LEFT);
 		DrNameLable.setFont(new Font("Tahoma", Font.BOLD, 16));
 		DrNameLable.setBounds(45, 11, 337, 33);
@@ -216,8 +210,6 @@ public class DoctorHomePage extends JFrame {
 		for(int i = 0; i <Dr.getPatientList().size(); i++ )
 		{
 			PatientList[i] = Dr.getPatientList().get(i).getFirstName()+", "+ Dr.getPatientList().get(i).getLastName();
-			//System.out.println("Size of List "+ PatientList.length);
-			System.out.println(PatientList[i]);
 		
 		}
 		
@@ -226,16 +218,6 @@ public class DoctorHomePage extends JFrame {
 		list.setForeground(Color.BLACK);
 		list.setBackground(Color.WHITE);
 		String patientName;
-		/*if(list.getSelectedValue() != null)
-		{
-			patientName = list.getSelectedValue().toString();
-		}
-		else
-		{
-			patientName = "";
-		}*/
-				
-				
 
 		JButton btnNewButton_2 = new JButton("View History");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -243,17 +225,10 @@ public class DoctorHomePage extends JFrame {
 				int index = list.getSelectedIndex();
 				if(index>=0)
 				{
-				
-				
-				System.out.println(PatientList[index]);
 				Patient myPatient = Dr.getPatient(index);
 				PatientHis pHis = new PatientHis(myPatient);
-				//pHis.PatientHis(P);
 		    	pHis.setVisible(true);
 		    	pHis.dispose();
-				
-				//PatientHistoryWindow page = new PatientHistoryWindow(dr.returnPatient(dr.getPatientList().get(index).getFirstName(), dr.getPatientList().get(index).getLastName() ));
-				//page.displayWindow();
 				}
 				
 			}
@@ -261,13 +236,6 @@ public class DoctorHomePage extends JFrame {
 		btnNewButton_2.setBounds(250, 197, 150, 33);
 		contentPane.add(btnNewButton_2);
 		
-	/*	
-		
-		
-		
-		
-	
-		*/
 		//remove Patient
 		JButton btnNewButton = new JButton("Remove Patient");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -277,20 +245,10 @@ public class DoctorHomePage extends JFrame {
 				if(index>=0)
 				{
 				
-				System.out.println(index);
-				//patientList[index] = "removed";
-				//Dr.removePatient(Dr.returnPatient(Dr.getPatientList().get(index).getFirstName(), Dr.getPatientList().get(index).getLastName() ));			
-				//System.out.println(dr.getPatientList().get(index).getFirstName());
-				
 				Patient myPatient = Dr.getPatient(index);
-				System.out.println(myPatient.getFirstName());
 				Dr.removePatient(myPatient);
 				Dr.printList();
 				
-				
-				
-				//list.revalidate();
-				//list.repaint();
 				JOptionPane.showMessageDialog(null, "Successfully removed");
 				
 				dispose();

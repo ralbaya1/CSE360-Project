@@ -1,11 +1,19 @@
 /* 
- * CSE 
+ * CSE 360
+ * Team11
  * 
 */
 
 import java.awt.Image;
 import java.sql.*;
 import java.util.*;
+
+/*
+ * This class connects to database and includes methods to insert, delete, get and check for
+ * items in database.
+ * 
+ */
+
 
 
 public class Database
@@ -17,8 +25,10 @@ public class Database
 		initializeDatabase();
 		
 	}
-	///////////////////////////////////////////////////////////////////
-	// Establishes a connection with the database and returns Connection type
+	//////////////////////////////////////////////////////////////////////////////
+	//dbConnection(): 
+	//		Establishes a connection with the database and returns Connection type
+	// DATABASE FILE= Patients.db
 	///////////////////////////////////////////////////////////////////////////
 	public static Connection dbConnection()
 	{
@@ -46,6 +56,10 @@ public class Database
 		
 	}
 	
+	
+	//initializeDatabase():
+	// 		Creates two Tables in database for Doctors and Patients
+	//
 	public static void initializeDatabase()
 	{
 		
@@ -121,9 +135,9 @@ public class Database
 	  
   }
   
-///////////////////////////////////////////////////////////////////////////////////////
-///takes in a Patient Object and inserts the patient info in the Patient Database.
-////////////////////////////////////////////////////////////////////////////////////////  
+	///////////////////////////////////////////////////////////////////////////////////////
+	///takes in a Patient Object and inserts the patient info in the Patient Database.
+	////////////////////////////////////////////////////////////////////////////////////////  
   public void addPatient(Patient P)
   {
 	  int age =0;
@@ -132,7 +146,7 @@ public class Database
 			  		  "SYMPTOM1,SYMPTOM2,SYMPTOM3,SYMPTOM4,SYMPTOM5,SYMPTOM6,SYMPTOM7,"+
   					"PrevSYMPTOM1_1,PrevSYMPTOM1_2,PrevSYMPTOM1_3,PrevSYMPTOM1_4,PrevSYMPTOM1_5,PrevSYMPTOM1_6,PrevSYMPTOM1_7,"+
   					"PrevSYMPTOM2_1,PrevSYMPTOM2_2,PrevSYMPTOM2_3,PrevSYMPTOM2_4,PrevSYMPTOM2_5,PrevSYMPTOM2_6,PrevSYMPTOM2_7,"+
-			  		  "SYMPTOM1Thresh,SYMPTOM2Thresh,SYMPTOM3Thresh,SYMPTOM4Thresh,SYMPTOM5Thresh,SYMPTOM6Thresh,SYMPTOM7Thresh, DOCTORSNAME, NOTIFICATION ) "; //notification
+			  		  "SYMPTOM1Thresh,SYMPTOM2Thresh,SYMPTOM3Thresh,SYMPTOM4Thresh,SYMPTOM5Thresh,SYMPTOM6Thresh,SYMPTOM7Thresh, DOCTORSNAME, NOTIFICATION ) "; //added notification
 	  newPat = newPat+"VALUES ('"+P.firstName+"', '"+P.lastName+"', "+age+", '"+P.userName+"', '"+P.password+"', '"+secQ+"', '"+P.securityQuestionAnswer+"',"
 			  		  +P.getEnterSymptomLevel()[0]+","+P.getEnterSymptomLevel()[1]+","+P.getEnterSymptomLevel()[2]+","+P.getEnterSymptomLevel()[3]+","+P.getEnterSymptomLevel()[4]+","+P.getEnterSymptomLevel()[5]+","+P.getEnterSymptomLevel()[6]+
 			  			"," +P.getPreviousSymptomLevel1()[0]+","+P.getPreviousSymptomLevel1()[1]+","+P.getPreviousSymptomLevel1()[2]+","+P.getPreviousSymptomLevel1()[3]+","+P.getPreviousSymptomLevel1()[4]+","+P.getPreviousSymptomLevel1()[5]+","+P.getPreviousSymptomLevel1()[6]+","
@@ -147,9 +161,9 @@ public class Database
 	}
   }
   
-  ////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////
   //Inserts a Doctor object to the Doctor Table database.    /////
-  ///////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
   public void addDoctor(Doctor D)
   {
 	 try{
@@ -167,11 +181,13 @@ public class Database
 	 
   }
   
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  //Adds Doctor based on info
+  /////////////////////////////////////////////////////////////////////////////////////////////
   public void addDoctor(String name, String lastname, String userName, String pass, String secAns)
   {
 	 try{
-		 
-		 
+		 // command to Insert is called with parameters
 	 String command =  "INSERT INTO DOCTORDATA (FIRSTNAME,LASTNAME,USERNAME,PASSWORD,SECURITYQN,SECURITYANS)"+
 			 "VALUES ('"+name+"', '"+lastname+"', '"+userName+"', '"+pass+"', '"+"What is Your favorite food?"+"', '"+secAns+"');";
 	 stmt.executeUpdate(command);
@@ -260,7 +276,6 @@ public class Database
 		rs = stmt.executeQuery("SELECT * FROM PATIENTDATA;" );
 		
 	  String dbuserN = "";
-		
 		
 		while(rs.next())
 		{
